@@ -18,15 +18,11 @@ public class CustomerList extends BaseList<Customer> {
 
     @Override
     public void add(Customer data) {
-        BaseNode<Customer> newNode = new CustomerNode(data);
-        if (head == null) {
-            head = newNode;
-        } else {
-            BaseNode<Customer> current = head;
-            while (current.next != null) {
-                current = current.next;
-            }
-            current.next = newNode;
-        }
+        super.add(new CustomerNode(data));
+    }
+
+    @Override
+    public void insert(int index, Customer data) {
+        super.insert(index, new CustomerNode(data));
     }
 }

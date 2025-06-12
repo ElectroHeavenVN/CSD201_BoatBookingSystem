@@ -21,4 +21,42 @@ public abstract class BaseList<T> {
     }
 
     public abstract void add(T data);
+
+    protected void add(BaseNode<T> newNode)
+    {
+        if (head == null) {
+            head = newNode;
+        } else {
+            BaseNode<T> current = head;
+            while (current.next != null) {
+                current = current.next;
+            }
+            current.next = newNode;
+        }
+    }
+
+    public abstract void insert(int index, T data);
+
+    protected void insert(int index, BaseNode<T> newNode) {
+        if (index < 0) {
+            throw new IndexOutOfBoundsException("Index cannot be negative");
+        }
+        if (index == 0) {
+            newNode.next = head;
+            head = newNode;
+            return;
+        }
+        
+        BaseNode<T> current = head;
+        for (int i = 0; i < index - 1 && current != null; i++) {
+            current = current.next;
+        }
+        
+        if (current == null) {
+            throw new IndexOutOfBoundsException("Index out of bounds");
+        }
+        
+        newNode.next = current.next;
+        current.next = newNode;
+    }
 }

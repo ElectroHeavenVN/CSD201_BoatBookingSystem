@@ -30,5 +30,13 @@ public class BoatList extends BaseList<Boat> {
             }
             current.next = newNode;
         }
+    @Override
+    public void add(Boat data) {
+        super.add(new BoatNode(data));
+    }
+
+    @Override
+    public void insert(int index, Boat data) {
+        super.insert(index, new BoatNode(data));
     }
 }
