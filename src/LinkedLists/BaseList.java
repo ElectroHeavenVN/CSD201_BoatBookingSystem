@@ -8,7 +8,7 @@ package LinkedLists;
  *
  * @author EHVN
  */
-public class BaseList<T> {
+public abstract class BaseList<T> {
     
     BaseNode<T> head;
 
@@ -19,4 +19,6 @@ public class BaseList<T> {
     public void traverse() {
         //TODO
     }
+
+    public abstract void add(T data);
 }
