@@ -9,5 +9,37 @@ package Entities;
  * @author EHVN
  */
 public class Customer {
-    
+    private String cCode;
+    private String customerName;
+    private String phone;
+
+    public String getcCode() {
+        return cCode;
+    }
+
+    public void setcCode(String cCode) {
+        this.cCode = cCode;
+    }
+
+    public String getCustomerName() {
+        return customerName;
+    }
+
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public Customer(String cCode, String customerName, String phone) {
+        this.cCode = cCode;
+        this.customerName = customerName;
+        this.phone = phone;
+    }
 }
