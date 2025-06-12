@@ -42,4 +42,10 @@ public abstract class BaseNode<T> {
     public void setInfo(T info) {
         this.info = info;
     }
+
+    public void remove() {
+        if (next != null) {
+            next = next.next;
+        }
+    }
 }

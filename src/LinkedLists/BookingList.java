@@ -15,4 +15,18 @@ public class BookingList extends BaseList<Booking> {
     public BookingList() {
         super();
     }
+
+    @Override
+    public void add(Booking data) {
+        BaseNode<Booking> newNode = new BookingNode(data);
+        if (head == null) {
+            head = newNode;
+        } else {
+            BaseNode<Booking> current = head;
+            while (current.next != null) {
+                current = current.next;
+            }
+            current.next = newNode;
+        }
+    }
 }
