@@ -37,8 +37,7 @@ public class Program {
                     System.out.println("Customer List functionality is not implemented yet.");
                     break;
                 case 3:
-                    // bookingMenu(sc, boatList, customerList, bookingList);
-                    System.out.println("Booking List functionality is not implemented yet.");
+                    bookingMenu(sc, boatList, customerList, bookingList);
                     break;
                 case 0:
                     System.out.println("Exiting program...");
@@ -203,13 +202,13 @@ public class Program {
 
             switch (opt) {
                 case 1:
-                    // TODO: inputBooking
+                    bookingList.inputData(boatList, customerList);
                     break;
                 case 2:
-                    // TODO: displayBooking
+                    bookingList.displayData();
                     break;
                 case 3:
-                    // TODO: sortBooking
+                    bookingList.sortByBcodeandCcode();
                     break;
                 case 0:
                     return;
