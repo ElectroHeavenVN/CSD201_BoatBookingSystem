@@ -15,10 +15,6 @@ public abstract class BaseList<T> {
     protected BaseList() {
         head = null;
     }
-    
-    public void traverse() {
-        //TODO
-    }
 
     public abstract void add(T data);
 
