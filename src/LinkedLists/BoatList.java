@@ -5,9 +5,6 @@
 package LinkedLists;
 
 import Entities.Boat;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
 
 /**
  *
@@ -18,18 +15,7 @@ public class BoatList extends BaseList<Boat> {
     public BoatList() {
         super();
     }
-    @Override
-    public void add(Boat data) {
-        BaseNode<Boat> newNode = new BoatNode(data);
-        if (head == null) {
-            head = newNode;
-        } else {
-            BaseNode<Boat> current = head;
-            while (current.next != null) {
-                current = current.next;
-            }
-            current.next = newNode;
-        }
+    
     @Override
     public void add(Boat data) {
         super.add(new BoatNode(data));
