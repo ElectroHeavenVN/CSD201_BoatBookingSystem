@@ -12,7 +12,10 @@ public class Customer {
     private String cCode;
     private String customerName;
     private String phone;
-
+@Override
+public String toString() {
+    return String.format("Code: %s, Name: %s, Phone: %s", cCode, customerName, phone);
+}
     public String getcCode() {
         return cCode;
     }

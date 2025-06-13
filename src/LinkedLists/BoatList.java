@@ -206,4 +206,8 @@ public class BoatList extends BaseList<Boat> {
         }
         return array;
     }
+
+    public boolean saveToFile(String saveFilePath) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
