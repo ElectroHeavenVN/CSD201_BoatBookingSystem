@@ -55,11 +55,10 @@ public class BoatList extends BaseList<Boat> {
         if (data == null) {
             return false;
         }
-        // check bcode is unique
         BaseNode<Boat> current = head;
         while (current != null) {
             if (current.info.getBcode().equals(data.getBcode())) {
-                return false; // Duplicate bcode found
+                return false;
             }
             current = current.next;
         }
@@ -88,7 +87,7 @@ public class BoatList extends BaseList<Boat> {
         }
     }
 
-    public boolean writeToFile(String fileName) {
+    public boolean saveToFile(String fileName) {
         try {
             File f = new File(fileName);
             BufferedWriter bw = new BufferedWriter(new FileWriter(f));
@@ -205,9 +204,5 @@ public class BoatList extends BaseList<Boat> {
             current = current.next;
         }
         return array;
-    }
-
-    public boolean saveToFile(String saveFilePath) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

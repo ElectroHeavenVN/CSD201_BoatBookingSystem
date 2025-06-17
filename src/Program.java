@@ -160,14 +160,10 @@ public class Program {
             System.out.println("\n--- CUSTOMER LIST MENU ---");
             System.out.println("1. Load data from file");
             System.out.println("2. Input & add to the end");
-            System.out.println("3. Input & add to the head");
-            System.out.println("4. Display data");
-            System.out.println("5. Save customer list to file");
-            System.out.println("6. Search by ccode");
-            System.out.println("7. Delete by ccode");
-            System.out.println("8. Sort by ccode");
-            System.out.println("9. Add before the node having ccode = xCode");
-            System.out.println("10. Delete the node before the node having ccode = xCode");
+            System.out.println("3. Display data");
+            System.out.println("4. Save customer list to file");
+            System.out.println("5. Search by ccode");
+            System.out.println("6. Delete by ccode");
             System.out.println("0. Back to main menu");
             System.out.print("Your choice: ");
             try {
@@ -183,7 +179,7 @@ public class Program {
                         }
                         break;
                     case 2:
-                        Customer newCustomer = readCustomer(sc);
+                        Customer newCustomer = Customer.readCustomer(sc);
                         if (customerList.searchByCcode(newCustomer.getcCode()) != null) {
                             System.out.println("Customer with this code already exists.");
                             break;
@@ -192,18 +188,9 @@ public class Program {
                         System.out.println("Customer added to the end successfully.");
                         break;
                     case 3:
-                        Customer newHeadCustomer = readCustomer(sc);
-                        if (customerList.searchByCcode(newHeadCustomer.getcCode()) != null) {
-                            System.out.println("Customer with this code already exists.");
-                            break;
-                        }
-                        customerList.addToHead(newHeadCustomer);
-                        System.out.println("Customer added to the head successfully.");
-                        break;
-                    case 4:
                         customerList.display();
                         break;
-                    case 5:
+                    case 4:
                         System.out.print("Enter file path to save customer data: ");
                         String saveFilePath = sc.nextLine();
                         if (customerList.saveToFile(saveFilePath)) {
@@ -212,7 +199,7 @@ public class Program {
                             System.out.println("Failed to save customer data.");
                         }
                         break;
-                    case 6:
+                    case 5:
                         System.out.print("Enter customer code to search: ");
                         String searchCCode = sc.nextLine();
                         CustomerNode foundCustomer = customerList.searchByCcode(searchCCode);
@@ -223,85 +210,24 @@ public class Program {
                             System.out.println("Customer not found.");
                         }
                         break;
-                    case 7:
+                    case 6:
                         System.out.print("Enter customer code to delete: ");
                         String deleteCCode = sc.nextLine();
-                        // Placeholder: Requires BookingList.hasBookingsForCustomer
-                        // if (bookingList.hasBookingsForCustomer(deleteCCode)) {
-                        //     System.out.println("Cannot delete customer with active bookings.");
-                        //     break;
-                        // }
                         if (customerList.deleteByCcode(deleteCCode)) {
                             System.out.println("Customer deleted successfully.");
                         } else {
                             System.out.println("Customer not found or deletion failed.");
                         }
                         break;
-                    case 8:
-                        Customer[] sortedCustomers = customerList.sortByCcode();
-                        if (sortedCustomers.length == 0) {
-                            System.out.println("Customer list is empty.");
-                            break;
-                        }
-                        System.out.println("Sorted customers by ccode:");
-                        for (Customer customer : sortedCustomers) {
-                            System.out.println(customer);
-                        }
-                        break;
-                    case 9:
-                        System.out.print("Enter ccode to add before: ");
-                        String xCode = sc.nextLine();
-                        Customer newCustomerToAdd = readCustomer(sc);
-                        if (customerList.searchByCcode(newCustomerToAdd.getcCode()) != null) {
-                            System.out.println("Customer with this code already exists.");
-                            break;
-                        }
-                        if (customerList.insertBefore(xCode, newCustomerToAdd)) {
-                            System.out.println("Customer added successfully before " + xCode);
-                        } else {
-                            System.out.println("Failed to add customer before " + xCode + ". Code not found.");
-                        }
-                        break;
-                    case 10:
-                        System.out.print("Enter ccode to delete before: ");
-                        String deleteBeforeCCode = sc.nextLine();
-                        if (customerList.deleteBefore(deleteBeforeCCode)) {
-                            System.out.println("Customer before " + deleteBeforeCCode + " deleted successfully.");
-                        } else {
-                            System.out.println("Failed to delete customer before " + deleteBeforeCCode + ". Code not found or no previous customer.");
-                        }
-                        break;
                     case 0:
                         return;
                     default:
-                        System.out.println("Invalid option. Please choose 0-10.");
+                        System.out.println("Invalid option. Please choose 0-6.");
                 }
             } catch (NumberFormatException e) {
                 System.out.println("Please enter a valid number.");
             }
         }
-    }
-
-    private static Customer readCustomer(Scanner sc) {
-        System.out.print("Enter customer code: ");
-        String cCode = sc.nextLine();
-        while (cCode.trim().isEmpty()) {
-            System.out.print("Customer code cannot be empty. Enter again: ");
-            cCode = sc.nextLine();
-        }
-        System.out.print("Enter customer name: ");
-        String customerName = sc.nextLine();
-        while (customerName.trim().isEmpty()) {
-            System.out.print("Customer name cannot be empty. Enter again: ");
-            customerName = sc.nextLine();
-        }
-        System.out.print("Enter phone number (digits only): ");
-        String phone = sc.nextLine();
-        while (!phone.matches("\\d+")) {
-            System.out.print("Invalid phone number. Enter digits only: ");
-            phone = sc.nextLine();
-        }
-        return new Customer(cCode, customerName, phone);
     }
 
     private static void bookingMenu(Scanner sc, BoatList boatList, CustomerList customerList, BookingList bookingList) {

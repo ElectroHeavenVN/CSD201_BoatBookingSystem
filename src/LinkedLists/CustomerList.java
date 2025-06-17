@@ -31,10 +31,6 @@ public class CustomerList extends BaseList<Customer> {
         super.insert(index, new CustomerNode(data));
     }
 
-    public void addToHead(Customer data) {
-        head = new CustomerNode(data, (CustomerNode) head);
-    }
-
     public boolean loadFromFile(String filePath) {
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             String line;
@@ -150,7 +146,7 @@ public class CustomerList extends BaseList<Customer> {
             return false;
         }
         if (((CustomerNode) head).getInfo().getcCode().equals(cCode)) {
-            addToHead(data);
+            head = new CustomerNode(data, (CustomerNode) head);
             return true;
         }
         CustomerNode current = (CustomerNode) head;
